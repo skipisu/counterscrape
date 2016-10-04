@@ -21,7 +21,7 @@
 
 import os
 
-with open("W:/Planning and Programming/PlanningProjects/VisitorUseStudy_Parks/Data/TrafficCounterData_RawFiles/RawShuttleFiles/Sandbox/ShuttleFile_VentureParks_20160908_8.TXT", "r")\
+with open("C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/ShuttleFile_VentureParks_20160908_2.TXT", "r")\
 		as sitedata:
 		sitelines = sitedata.readlines()
 		
@@ -33,7 +33,7 @@ with open("W:/Planning and Programming/PlanningProjects/VisitorUseStudy_Parks/Da
 			if "=DOCK TIME" in line:
 				filedate = line[28:].strip().replace("-", "").replace(" ", "_").replace(":", "")
 		filename = sitename + "_" + filedate
-		with open("W:/Planning and Programming/PlanningProjects/VisitorUseStudy_Parks/Data/TrafficCounterData_RawFiles/RawShuttleFiles/Sandbox/%s.TXT" % filename, 'w')\
+		with open("C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/%s.TXT" % filename, 'w')\
 		as siteout:	
 			siteout.write("sitename, date, time, count\n")
 			
@@ -47,4 +47,3 @@ with open("W:/Planning and Programming/PlanningProjects/VisitorUseStudy_Parks/Da
 				if line[0].isdigit():
 					alldata = sitename + ',' + line.strip()
 					siteout.write(alldata + '\n')
-			
