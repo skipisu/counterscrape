@@ -2,25 +2,25 @@
 
 #############################################################################
 #############################################################################
-#									    #
-#	created by : Schuyler Sampson                                       #
-#	created with: Python 3.4.4					    #
-#									    #
-#	This file is used for splitting the traffic counter files           #
-#	It will split the master counter file from teh TRAFX Counters       #
-#	                                                                    #
-#									    #
-#	1.) Copy and Paste Raw Coutner File into a "sanbox" folder	    #
-#	2.) Exectute this file in Python (crtl+F1)			    #
-#	3.) Copy and past the complete filepath of the file to parsed       #
+#																			#
+#	created by : Schuyler Sampson                                       	#
+#	created with: Python 3.4.4					    						#
+#									    									#
+#	This file is used for splitting the traffic counter files           	#
+#	It will split the master counter file from teh TRAFX Counters       	#
+#	                                                                    	#
+#									    									#
+#	1.) Copy and Paste Raw Coutner File into a "sanbox" folder	    		#
+#	2.) Exectute this file in Python (crtl+F1)			    				#
+#	3.) Copy and past the complete filepath of the file to parsed       	#
 #           when the prompt appears. (you do not need to include open       #
 #           and close quoatation marks for the filepath)                    #
-#	4.) This program will split/parse the data file into individual     #
+#	4.) This program will split/parse the data file into individual     	#
 #           text files by site. each file will be renamed as the original   #
 #           but with the a "_n".txt                                         #
-#	    file directory of the raw file  			            #
-#	5.) Close the Python console window when completed		    #
-#									    #
+#	    file directory of the raw file  			            			#
+#	5.) Close the Python console window when completed		    			#
+#									    									#
 #############################################################################
 #############################################################################
 
