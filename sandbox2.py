@@ -6,15 +6,20 @@ rawcounterfile = "C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleFile_Ventur
 
 path, filename = os.path.split(rawcounterfile)
 basename, ext = os.path.splitext(filename)
+
+#rawdata_lines = []
+#sitedata_lines = []
 	
 with open(rawcounterfile, 'r')\
     as rawdata:
 		rawdata_lines = rawdata.readlines()	#creates list called datalines
-		i = 1               # establishes starting point for naming new files 1 to n
+		
+		#	reads and sppends data from file line by line
 		for line in rawdata_lines:
 			if line.strip():
 				rawdata_lines.append(line)
-				
+			
+			#seperates the file by designation of file seperation structure	
 			if line.strip() == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<<<<<<":
 				#creates the filename by site
 				for line in rawdata_lines:
@@ -27,6 +32,7 @@ with open(rawcounterfile, 'r')\
 				with open("C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/%s.TXT" % filename, 'w')\
 				as siteout:	
 					siteout.write("sitename, date, time, count\n")
+					
 					for line in rawdata_lines:
 		
 						#extracts traffic counter name as 'sitename' 
