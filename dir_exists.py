@@ -9,10 +9,10 @@ def path_exists(dirs):
 		print("That Directory Already Exists!")
 	else:
 		os.makedirs(dirs + "/ShuttleOutput/")
-		
+		print("ShuttleOutput/ Directory Created!!!")
 
-def main_newfile():
+def new_shuttleoutput():
     userPath = input("Enter the New filefolder path:")
     path_exists(userPath)
 
-main_newfile()
+new_shuttleoutput()

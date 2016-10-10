@@ -1,80 +1,74 @@
 
 
+
 import os
-import csv
 
 
-rawcounterfile = "C:/Users/Schuyler/Documents/Sandbox/ShuttleFile_VentureParks_20160908.TXT"
 
-filepath, filename = os.path.split(rawcounterfile)
-basename, ext = os.path.splitext(filename)
-
-rawdata_lines = []
-sitedata_lines = []
-sitedata = {}
-i = 1	
-
-
-#def path_exists(filepath):
-#	if os.path.isdir(filepath + "/ShuttleOutput/"):
-#		print("That Directory Already Exists!")
-#	else:
-#		os.makedirs(filepath + "/ShuttleOutput/")
-
-#def read_file(rawcounterfile):
-with open(rawcounterfile, 'r') as rawdata:
-	rawdata_lines = rawdata.readlines()
-			
-	for line in rawdata_lines:
-		 if line.strip():
-			rawdata_lines.append(line)
-	print(rawdata_lines)
-		# if line.strip() == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<<<<<<":		
-			# ''.join(rawdata_lines)
-			# i += 1 
-			# sitedata_lines = []
+def file_splitter(fullfilepath):
+	#   splits text file based on a splitting identifier
+	path, filename = os.path.split(fullfilepath)
+	basename, ext = os.path.splitext(filename)
+	shuttle_output_dir = path + "/ShuttleOutput/"
 	
-		# sitedata_lines.append(line)
-			# i += 1
-			# sitedata_lines = []
-	# print(sitedata_lines)
+	if os.path.isdir(shuttle_output_dir):
+		print("That Directory Already Exists!")
+	else:
+		os.makedirs(shuttle_output_dir)
+		print("/ShuttleOutput/ Directory Created!!!")
 	
-#	sitedata_lines = ''.join.rawdata_lines
-#	print(sitedata_lines) 
-		#skip empty lines
-		#	rawdata_lines.append(line)	#creates list called datalines
-			
-			#sitedata_lines = rawdata_lines.write()
-		#print(sitedata_lines)
-		# if line.strip() == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<<<<<<":
-			# for line in rawdata_lines:
-				# if "*Counter name   :" in line:
-					# sitename = line[19:].strip()
-					
-				# if "=DOCK TIME" in line:
-					# filedate = "20" + line[28:-9].strip().replace("-", "")
-			# site_filename = sitename + "_" + filedate
-				
-			#rawdata_lines.write("sitename, date, time, count\n")
+	
+	#   opens the original source text file
+	with open(fullfilepath, 'r') as rawdata:
+		datalines = []	#creates list called "datalines"
+		i = 1 
 		
-				#extracts traffic counter name as 'sitename'  --- from counter to csv
-			#if "*Counter name   :" in line:
-			#	sitename = line[19:].strip()
+		# reads each line data from "rawdata"
+		for line in rawdata:
+			if line.strip():
+				datalines.append(line)
+			if line.strip() == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<<<<<<":
+				f_output = os.path.join(shuttle_output_dir, '{}_{}{}'.format(basename, i, ext))
+				f_out = open(f_output, 'w')
+				f_out.write(''.join(datalines))
+				f_out.close()
+				i += 1
+				datalines = []
 
-			#combines 'sitename' and 'line' stripped to complete the file if line begins with a number
-			#if line[0].isdigit():
-			#	sitedata = sitename + ',' + line.strip()
-			#	siteout.write(sitedata + '\n')
-			#sitefile_output = os.path.join(filepath + '/ShuttleOutput/', '{}_{}{}'.format(site_filename, i, ext))
-			#sitedata_out = open(sitefile_output, 'w')
-			#sitedata_out.write(''.join(rawdata_lines))
-			#sitedata_out.close()
-			#i += 1
-			#sitedata_lines = []
+#   calls for the file for parsing and executes "file_splitter" above
+def counterdata_parse():
+	
+	user_filepath = input("Enter filepath to the Traffic Counter File to be Parsed:  ")
+	file_splitter(user_filepath)
+	
+	# path, filename = os.path.split(user_filepath)
+	
+	# if os.path.isdir(path + "/ShuttleOutput/"):
+		# print("That Directory Already Exists!")
+	# else:
+		# os.makedirs(path + "/ShuttleOutput/")
+		# print("/ShuttleOutput/ Directory Created!!!")
+	
+counterdata_parse()
 
+	
+#	checks to see if directory exists. 
+#	if true then dir not created
+#	if false then dir is created
 
-		
+# def path_exists(dirs):
+	# if os.path.isdir(dirs + "/ShuttleOutput/"):
+		# print("That Directory Already Exists!")
+	# else:
+		# os.makedirs(dirs + "/ShuttleOutput/")
+		# print("/ShuttleOutput/ Directory Created!!!")
+	# fullfilepath = os.path.join(dirs, "ShuttleOutput")	
+	# file_splitter(fullfilepath)
 
-#def main_newfile():
-#   userPath = input("Enter the New filefolder path:")
-#   path_exists(userPath)	
+# def new_shuttleoutput():
+	
+	# user_path = input("Enter the New filefolder path:")
+	# path, filename = os.path.split(user_path)
+	# path_exists(path)
+	
+#new_shuttleoutput()

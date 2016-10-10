@@ -21,7 +21,7 @@
 
 import os
 
-with open("C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/ShuttleFile_VentureParks_20160908_2.TXT", "r")\
+with open("C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleFile_VentureParks_20160908_2.TXT", "r")\
 		as sitedata:
 		sitelines = sitedata.readlines()
 		
