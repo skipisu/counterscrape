@@ -41,34 +41,5 @@ def counterdata_parse():
 	user_filepath = input("Enter filepath to the Traffic Counter File to be Parsed:  ")
 	file_splitter(user_filepath)
 	
-	# path, filename = os.path.split(user_filepath)
-	
-	# if os.path.isdir(path + "/ShuttleOutput/"):
-		# print("That Directory Already Exists!")
-	# else:
-		# os.makedirs(path + "/ShuttleOutput/")
-		# print("/ShuttleOutput/ Directory Created!!!")
-	
+		
 counterdata_parse()
-
-	
-#	checks to see if directory exists. 
-#	if true then dir not created
-#	if false then dir is created
-
-# def path_exists(dirs):
-	# if os.path.isdir(dirs + "/ShuttleOutput/"):
-		# print("That Directory Already Exists!")
-	# else:
-		# os.makedirs(dirs + "/ShuttleOutput/")
-		# print("/ShuttleOutput/ Directory Created!!!")
-	# fullfilepath = os.path.join(dirs, "ShuttleOutput")	
-	# file_splitter(fullfilepath)
-
-# def new_shuttleoutput():
-	
-	# user_path = input("Enter the New filefolder path:")
-	# path, filename = os.path.split(user_path)
-	# path_exists(path)
-	
-#new_shuttleoutput()
