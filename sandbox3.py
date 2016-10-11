@@ -20,13 +20,13 @@ def file_splitter(fullfilepath):
 	
 	#   opens the original source text file
 	with open(fullfilepath, 'r') as rawdata:
-		datalines = []	#creates list called "datalines"
+		rawdata_lines = []	#creates list called "datalines"
 		i = 1 
 		
 		# reads each line data from "rawdata"
 		for line in rawdata:
 			if line.strip():
-				datalines.append(line)
+				rawdata_lines.append(line)
 			if line.strip() == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<<<<<<":
 				f_output = os.path.join(shuttle_output_dir, '{}_{}{}'.format(basename, i, ext))
 				f_out = open(f_output, 'w')
