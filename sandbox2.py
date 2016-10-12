@@ -1,17 +1,22 @@
 
+#work location:	C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput
+#home location:	C:/Users/Schuyler/Documents/Sandbox/TestScrape/ShuttleOutput
+
+
+
 import os
 import glob
 
-#C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput
 
 def site_files(user_filepath):
-	"""		creates new temp counter data directory "/SiteOutput/" 	"""
-	"""		if not present. if temp directory ".../SiteOutput" present 	"""
-	"""		prompts user to delete or move directory.					 	""" 
+	"""		converts text files from the counterscrape script to a csv format								"""
+	"""		creates new temp counter data directory "/SiteOutput/" if not present.						"""
+	"""		if temp directory ".../SiteOutput" present prompts user to delete or move directory.		""" 
 	
-	os.path.dirname(user_filepath)
 	
+	os.path.dirname(user_filepath)	
 	filedata_output_dir = user_filepath + "/SiteOutput/"
+	
 	
 	if os.path.isdir(filedata_output_dir):
 		print("\n\nThe Directory <<<%s>>> \nAlready Exists!!!" % filedata_output_dir, \
@@ -20,14 +25,14 @@ def site_files(user_filepath):
 		os.makedirs(user_filepath + "/SiteOutput/")
 		print("\n\nOutput file: <<<%s>>> \nDirectory Created!!!\n\n" % filedata_output_dir)
 
-	site_files(user_filepath)
+	sitedata_txt(user_filepath)
 
 
 
 def sitedata_txt(user_filepath):
 	#user_sitefilepath = input("\nSite Data File File Please:\n\n")
-	user_filepath = input("\nSite Data File File Please:\n\n")
-	site_outpath = user_filepath + "/SiteOutput/"		#C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/SiteOutput/"
+	#user_filepath = input("\nEnter Site Data Filepath:\n\n")
+	site_outpath = user_filepath + "/SiteOutput/"	
 	#site_file = []
 
 		
@@ -48,7 +53,7 @@ def sitedata_txt(user_filepath):
 						filedate = line[28:].strip().replace("-", "").replace(" ", "_").replace(":", "")
 				
 				filename = sitename + "_" + filedate
-
+				
 				with open(site_outpath + '%s.TXT' % filename, 'w') as site_out:
 					site_out.write("sitename, date, time, count\n")
 					
@@ -61,17 +66,16 @@ def sitedata_txt(user_filepath):
 						#	combines 'sitename' and 'line' stripped to complete the file if line begins with a number
 						if line[0].isdigit():
 							alldata = sitename + ',' + line.strip()
-							site_out.write(alldata + '\n')
-
-							
-	sitedata_txt(filedata_output_dir)
+							site_out.write(alldata + '\n')					
 
 
 		
 def counterdata_sites():
+	"""		prompts user for the file path location where files to be converted to csv format "site_files()" """
+	
 	user_filepath = input("\nTraffic Counter Site Data Files Script Running......\n\n"\
-	"Enter filepath To The Site Traffic Counter Files To Be Processed As CSV Files:  \n")
-	#print("This should be under the ""...\ShuttleOutput\"" "Directory")
+		"Enter filepath To The Site Traffic Counter Files To Be Processed As CSV Files:  \n")
+	
 	site_files(user_filepath)
 
 counterdata_sites()

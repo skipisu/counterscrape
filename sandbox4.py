@@ -3,13 +3,14 @@
 import os
 import datetime 
 
-#C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/
-
+#work location:	C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput
+#work location:	C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/SiteOutput
+#home location:	C:/Users/Schuyler/Documents/Sandbox/TestScrape/ShuttleOutput
 
 def sitedata_txt():
 	#user_sitefilepath = input("\nSite Data File File Please:\n\n")
 	user_filepath = input("\nSite Data File File Please:\n\n")
-	site_outpath = user_filepath + "/SiteOutput/"		#C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput/SiteOutput/"
+	site_outpath = user_filepath + "/SiteOutput/"		
 	#site_file = []
 
 		
