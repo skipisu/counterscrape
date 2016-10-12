@@ -83,7 +83,7 @@ def rawfile_dirs(fullfilepath):
 	if os.path.isdir(shuttledata_output_dir):
 		print("\n\nThe Directory <<< %s >>> \nAlready Exists!!!" % shuttledata_output_dir, \
 		"\n\n	<<<   Please Delete or Move Directory and Files!!!   >>>\n"\
-		"\n	<<<   Returning Back to the Parsing Prompt!!!\       >>>\n")
+		"\n	<<<   Returning Back to the Parsing Prompt!!!       >>>\n")
 		return counterdata_parse()
 	else:
 		os.makedirs(shuttledata_output_dir)
