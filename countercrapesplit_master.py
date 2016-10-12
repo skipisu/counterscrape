@@ -1,43 +1,76 @@
-#############################################################################
-#############################################################################
-#############################################################################
-#																			#
-#	created by : Schuyler Sampson											#
-#	created with: Python 3.4.4												#
-#																			#
-#		This file is used for splitting the traffic counter files			#
-#		It will split the master counter file requeseted when 				#
-#	file_splitter() is entered at the python prompt.  						#
-#																			#
-#	1.) Copy and Paste Raw Coutner File into a "sanbox" folder				#
-#	2.) Exectute this file in Python (crtl+F1)								#
-#	3.)	Type file_splitter("file_path_of_Raw_File") and hit enter.	 		#
-#	4.) Split Files will be placed in the same								#
-#		file directory of the raw file										#
-#	5.) Close the Python console window										#
-#																			#
-#############################################################################
-#############################################################################
-#############################################################################
-
-import os
-
-def file_splitter(fullfilepath):
-	"""splits text file based on a splitting identifier"""
-	path, filename = os.path.split(fullfilepath)
-	basename, ext = os.path.splitext(filename)
-
-	#	opens the original source text file
-	with open(fullfilepath, 'r') as rawdata:
-		datalines = []	#creates list called datalines
-		i = 1 
-		for line in rawdata:
-			if line.strip():
-				datalines.append(line)
-			if line.strip() == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<<<<<<":
-				f_output = os.path.join(path, '{}_{}{}'.format(basename, i, ext))
-				f_out = open(f_output, 'w')
-				f_out.write(''.join(datalines))
-				f_out.close()
-				i += 1
-				datalines =[]
+ import os
+ import datetime
+ 
+ 
+ def site_files(user_filepath):
+ 	"""		converts text files from the counterscrape script to a csv format								"""
+ 	"""		creates new temp counter data directory "/SiteOutput/" if not present.						"""
+ 	"""		if temp directory ".../SiteOutput" present prompts user to delete or move directory.		""" 
+ 	
+ 	
+ 	os.path.dirname(user_filepath)	
+ 	sitedata_output_dir = user_filepath + "/SiteOutput/"
+ 	
+ 	
+ 	if os.path.isdir(sitedata_output_dir):
+ 		print("\n\nThe Directory <<< %s >>> \nAlready Exists!!!" % sitedata_output_dir, \
+ 		"\n\n\n<<<   Please Delete or Move Directory and Files!!!   >>>\n"\
+ 		"\n<<<   Returning Back To Traffic Site File Script Prompt!!!   >>>\n\n")
+ 		return counterdata_sites()
+ 	else:
+ 		os.makedirs(user_filepath + "/SiteOutput/")
+ 		print("\nDirectory Created!\n",str(datetime.datetime.now().strftime("%H:%M:%S")),\
+ 		"Output file: <<< %s >>>\n\n" % sitedata_output_dir)
+ 
+ 	sitedata_txt(user_filepath)
+ 
+ 
+ 
+ def sitedata_txt(user_filepath):
+ 	site_outpath = user_filepath + "/SiteOutput/"	
+ 
+ 		
+ 	for site_file in os.listdir(user_filepath):
+ 		sitedata = os.path.join(user_filepath, site_file)
+ 		
+ 		if os.path.isfile(sitedata):
+ 		
+ 			with open(sitedata, 'r') as sites:
+ 				sitelines = sites.readlines()
+ 
+ 				#	creates the filename 
+ 				for line in sitelines:
+ 					if "*Counter name   :" in line:
+ 						sitename = line[19:].strip()
+ 
+ 					if "=DOCK TIME" in line:
+ 						filedate = line[28:].strip().replace("-", "").replace(" ", "_").replace(":", "")
+ 				
+ 				filename = sitename + "_" + filedate
+ 				
+ 				with open(site_outpath + '%s.TXT' % filename, 'w') as site_out:
+ 					site_out.write("sitename, date, time, count\n")
+ 					
+ 					for line in sitelines:
+ 					
+ 					#	extracts traffic counter name as 'sitename' 
+ 						if "*Counter name   :" in line:
+ 							sitename = line[19:].strip()
+ 
+ 						#	combines 'sitename' and 'line' stripped to complete the file if line begins with a number
+ 						if line[0].isdigit():
+ 							alldata = sitename + ',' + line.strip()
+ 							site_out.write(alldata + '\n')					
+ 					print(str(datetime.datetime.now().strftime("%H:%M:%S")),   "   Creating File:   <<<" + site_outpath + "%s.TXT>>>" % filename)
+ 
+ 		
+ def counterdata_sites():
+ 	"""		prompts user for the file path location where files to be converted to csv format "site_files()" """
+ 	
+ 	user_filepath = input("WELCOME TO THE TRAFFIC COUNTER SITE DATA TO CSV LAYOUT SCRIPT!\n"\
+ 		"\nTraffic Counter Site Data Files Script Running...\n"\
+ 		"\nEnter Filepath To The Parsed Traffic Counter Files To Be Processed As CSV Format/Layout:  \n")
+ 	
+ 	site_files(user_filepath)
+ 
+ counterdata_sites()
