@@ -64,7 +64,7 @@ def sitedata_txt(user_filepath):
 							alldata = sitename + ',' + line.strip()
 							site_out.write(alldata + '\n')					
 					print(str(datetime.datetime.now().strftime("%H:%M:%S")),   "   Creating File:   <<<" + site_outpath + "%s.TXT>>>" % filename)
-
+	input("\n\nPress Enter to Exit!")
 		
 def counterdata_sites():
 	"""		prompts user for the file path location where files to be converted to csv format "site_files()" """

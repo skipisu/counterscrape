@@ -28,7 +28,7 @@ def rawfile_dirs(fullfilepath):
 	if os.path.isdir(shuttledata_output_dir):
 		print("\n\nThe Directory <<< %s >>> \nAlready Exists!!!" % shuttledata_output_dir, \
 		"\n\n	<<<   Please Delete or Move Directory and Files!!!   >>>\n"\
-		"\n	<<<   Returning Back to the Parsing Prompt!!!\   >>>n")
+		"\n	<<<   Returning Back to the Parsing Prompt!!!\       >>>\n")
 		return counterdata_parse()
 	else:
 		os.makedirs(shuttledata_output_dir)
@@ -52,7 +52,7 @@ def rawfile_dirs(fullfilepath):
 				i += 1
 				rawdata_lines = []
 				print(str(datetime.datetime.now().strftime("%H:%M")),	"   Creating   <<< %s >>>" % f_output)
-
+	input("\n\nPress Enter to Exit!")
 def counterdata_parse():
 	"""   calls for the file for parsing	"""
 	""" executes "file_splitter" above 	"""
@@ -61,6 +61,6 @@ def counterdata_parse():
 	"\nTraffic Counter Raw Data File Parsing Script Running...\n"\
 	"\nEnter Full Filepath For The Traffic Counter File To Be Parsed:\n")
 	rawfile_dirs(user_filepath)
-	
+
 		
 counterdata_parse()
