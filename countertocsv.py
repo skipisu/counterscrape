@@ -1,7 +1,4 @@
 
-#work location:	C:/Users/schuyler.sampson/Documents/Sandbox/ShuttleOutput
-#home location:	C:/Users/Schuyler/Documents/Sandbox/TestScrape/ShuttleOutput
-
 
 
 import os

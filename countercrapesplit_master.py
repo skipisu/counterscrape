@@ -15,7 +15,6 @@
 import os
 import datetime
 
-#Home FilePath: C:/Users/Schuyler/Documents/Sandbox/TestScrape/ShuttleFile_VentureParks_20160908.TXT
 
 def rawfile_dirs(fullfilepath):
 	"""		check if ShuttleOuput/ directory exists			"""
