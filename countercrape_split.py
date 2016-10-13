@@ -53,6 +53,7 @@ def rawfile_dirs(fullfilepath):
 				rawdata_lines = []
 				print(str(datetime.datetime.now().strftime("%H:%M")),	"   Creating   <<< %s >>>" % f_output)
 	input("\n\nPress Enter to Exit!")
+
 def counterdata_parse():
 	"""   calls for the file for parsing	"""
 	""" executes "file_splitter" above 	"""
